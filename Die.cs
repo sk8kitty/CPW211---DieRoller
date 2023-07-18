@@ -12,6 +12,15 @@ namespace DieRoller
     public class Die
     {
         /// <summary>
+        /// Creates Die and rolls it so that it begins with a random face-up value
+        /// </summary>
+        public Die()
+        {
+            Roll();
+        }
+
+
+        /// <summary>
         /// Represents the current face-up value
         /// </summary>
         public byte FaceValue { get; private set; }
@@ -20,6 +29,7 @@ namespace DieRoller
         /// Represents whether the die is held - True if the die is held
         /// </summary>
         public bool IsHeld { get; set; }
+
 
         /// <summary>
         /// Rolls the die and sets <see cref="FaceValue"/> to the new number.
