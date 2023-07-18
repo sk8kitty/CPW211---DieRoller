@@ -12,9 +12,31 @@ namespace DieRoller
     public class Die
     {
         /// <summary>
+        /// The random object to be shared between all Die objects 
+        /// </summary>
+        private static Random _r;
+
+        /// <summary>
+        /// Initializes the static random object to be shared among all Die objects
+        /// </summary>
+        static Die()
+        {
+            _r = new Random();
+        }
+
+        /// <summary>
+        /// Creates a Die object and calls <see cref="Roll"/> so that it begins with a random face-up value
+        /// </summary>
+        public Die()
+        {
+            Roll();
+        }
+
+
+        /// <summary>
         /// Represents the current face-up value
         /// </summary>
-        public byte FaceValue { get; set; }
+        public byte FaceValue { get; private set; }
 
         /// <summary>
         /// Represents whether the die is held - True if the die is held
@@ -22,15 +44,17 @@ namespace DieRoller
         public bool IsHeld { get; set; }
 
         /// <summary>
-        /// Rolls the die and sets <see cref="FaceValue"/> to the new number.
-        /// Returns the new number.
+        /// Rolls the die and sets <see cref="FaceValue"/> to a new number if the die is not held.
+        /// Returns <see cref="FaceValue"/>.
         /// </summary>
-        public void Roll()
+        public byte Roll()
         {
-            // Generate random number
-            // Set FaceValue
-            // Return number
-            throw new NotImplementedException();
+            if (!IsHeld)
+            {
+                FaceValue = (byte) _r.Next(1, 7);
+            }
+
+            return FaceValue;
         }
     }
 }
