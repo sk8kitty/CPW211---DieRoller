@@ -30,7 +30,6 @@ namespace DieRoller
             // Generate random number
             // Set FaceValue
             // Return number
-
             throw new NotImplementedException();
         }
     }
