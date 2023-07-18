@@ -25,12 +25,14 @@ namespace DieRoller
         /// Rolls the die and sets <see cref="FaceValue"/> to the new number.
         /// Returns the new number.
         /// </summary>
-        public void Roll()
+        public byte Roll()
         {
-            // Generate random number
-            // Set FaceValue
-            // Return number
-            throw new NotImplementedException();
+            Random r = new Random();
+            byte roll = (byte) r.Next(1, 7);
+
+            FaceValue = roll;
+
+            return roll;
         }
     }
 }
