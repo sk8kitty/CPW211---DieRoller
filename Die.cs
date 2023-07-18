@@ -14,7 +14,7 @@ namespace DieRoller
         /// <summary>
         /// Represents the current face-up value
         /// </summary>
-        public byte FaceValue { get; set; }
+        public byte FaceValue { get; private set; }
 
         /// <summary>
         /// Represents whether the die is held - True if the die is held
