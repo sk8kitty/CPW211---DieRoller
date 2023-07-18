@@ -12,7 +12,20 @@ namespace DieRoller
     public class Die
     {
         /// <summary>
-        /// Creates Die and rolls it so that it begins with a random face-up value
+        /// The random object to be shared between all Die objects 
+        /// </summary>
+        private static Random _r;
+
+        /// <summary>
+        /// Initializes the static random object to be shared among all Die objects
+        /// </summary>
+        static Die()
+        {
+            _r = new Random();
+        }
+
+        /// <summary>
+        /// Creates a Die object and calls <see cref="Roll"/> so that it begins with a random face-up value
         /// </summary>
         public Die()
         {
@@ -30,7 +43,6 @@ namespace DieRoller
         /// </summary>
         public bool IsHeld { get; set; }
 
-
         /// <summary>
         /// Rolls the die and sets <see cref="FaceValue"/> to a new number if the die is not held.
         /// Returns <see cref="FaceValue"/>.
@@ -39,10 +51,7 @@ namespace DieRoller
         {
             if (!IsHeld)
             {
-                Random r = new Random();
-                byte roll = (byte)r.Next(1, 7);
-
-                FaceValue = roll;
+                FaceValue = (byte) _r.Next(1, 7);
             }
 
             return FaceValue;
